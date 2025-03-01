@@ -15,5 +15,8 @@ def resegment_raw_path(raw_dir: Path) -> Path:
     dir_raw = os.path.join(*raw_dir._raw_paths)
     pat_match = re.match(pat, dir_raw)
     raw_top_dir = Path(pat_match.group() if pat_match else ".")
-    dir_rel_rest = raw_dir.relative_to(raw_top_dir)
+    if raw_dir.is_absolute() and not raw_top_dir.is_absolute():
+        dir_rel_rest = raw_dir.relative_to(raw_top_dir.absolute())
+    else:
+        dir_rel_rest = raw_dir.relative_to(raw_top_dir)
     return raw_top_dir.joinpath(*dir_rel_rest.parts)
