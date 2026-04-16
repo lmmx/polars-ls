@@ -1,3 +1,7 @@
+[build-system]
+build-backend = "uv_build"
+requires = ["uv_build>=0.11.6,<0.12"]
+
 [project]
 name = "polars-ls"
 version = "0.5.4"
@@ -9,6 +13,7 @@ authors = [
 requires-python = ">=3.10"
 dependencies = [
     "argh>=0.31.3",
+    "polars>=1.30",
 ]
 
 [project.scripts]
@@ -20,22 +25,7 @@ Homepage = "https://github.com/lmmx/polars-ls"
 Repository = "https://github.com/lmmx/polars-ls.git"
 
 [project.optional-dependencies]
-polars-lts-cpu = [
-    "polars-lts-cpu>=1.21.0",
-]
-polars = [
-    "polars>=1.21.0",
-]
-dev = [
-    "pdm>=2.22.3",
-    "pdm-bump>=0.9.10",
-]
-
-[build-system]
-requires = [
-    "pdm-backend",
-]
-build-backend = "pdm.backend"
+lts-cpu = ["polars[rtcompat]>=1.30"]
 
 [dependency-groups]
 dev = [
@@ -43,3 +33,7 @@ dev = [
     "inline-snapshot[black]>=0.19.3",
     "pytest>=8.3.4",
 ]
+
+[tool.uv.build-backend]
+module-name = "pols"
+module-root = "src"
