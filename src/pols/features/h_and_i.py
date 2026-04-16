@@ -18,7 +18,7 @@ def format_size(size_expr, unit):
             size_expr.ceil()
             .cast(pl.Int64)
             .cast(pl.String)
-            .str.replace(".0", "", literal=True)
+            .str.replace(".0", "", literal=True),
         ),
         pl.lit(unit),
     )
@@ -37,7 +37,7 @@ def scale_unit_size(files: pl.LazyFrame, base: int) -> pl.LazyFrame:
         .then(format_size(kb, "K"))
         .when(size_col < base * base * base)
         .then(format_size(mb, "M"))
-        .otherwise(format_size(gb, "G"))
+        .otherwise(format_size(gb, "G")),
     )
 
 

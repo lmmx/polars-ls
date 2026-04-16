@@ -65,7 +65,14 @@ def ls(
     S: bool = False,
     sort: Literal[None, "size", "time", "version", "extension"] = None,
     time: Literal[
-        "atime", "access", "use", "ctime", "status", "birth", "creation", "mtime"
+        "atime",
+        "access",
+        "use",
+        "ctime",
+        "status",
+        "birth",
+        "creation",
+        "mtime",
     ] = "mtime",
     time_style: (
         Literal["full-iso", "long-iso", "iso", "locale"] | TimeFormat
@@ -181,7 +188,7 @@ def ls(
     inspect = debug or inspect
     if si and h:
         raise SystemExit(
-            "Cannot set both `h` and `si` (conflicting bases for file size)"
+            "Cannot set both `h` and `si` (conflicting bases for file size)",
         )
     printer_lookup = {
         "stdout": stdout,
@@ -297,8 +304,8 @@ def ls(
         elif not path.exists():
             nonexistent.append(
                 FileNotFoundError(
-                    f"pols: cannot access '{path}': No such file or directory"
-                )
+                    f"pols: cannot access '{path}': No such file or directory",
+                ),
             )
     if nonexistent:
         excs = ExceptionGroup("No such file:", nonexistent)
@@ -318,7 +325,9 @@ def ls(
                 raw_usd = resegment_raw_path(unscanned_dir)
                 # Must preserve raw paths carefully. Flatten sublevel lists first
                 desc_dir_strs = flat_descendants(
-                    raw_usd, hidden=hidden_files_allowed, report=debug
+                    raw_usd,
+                    hidden=hidden_files_allowed,
+                    report=debug,
                 )
                 descendant_dirs = [resegment_raw_path(Path(dd)) for dd in desc_dir_strs]
             dirs_to_scan.extend(descendant_dirs)
@@ -453,8 +462,10 @@ def ls(
                         subpath = path_set_file.relative_to(dir_root)
                         rs_subpath = resegment_raw_path(
                             Path(
-                                os.path.sep.join([*dir_root._raw_paths, *subpath.parts])
-                            )
+                                os.path.sep.join(
+                                    [*dir_root._raw_paths, *subpath.parts],
+                                ),
+                            ),
                         )
                         path_set.append(rs_subpath)
         else:
@@ -472,7 +483,7 @@ def ls(
                     "name": str(
                         path
                         if path.is_absolute() or is_dir
-                        else path.absolute().relative_to(dir_root.absolute())
+                        else path.absolute().relative_to(dir_root.absolute()),
                     ),
                     "rel_to": dir_root,
                 }
@@ -515,7 +526,7 @@ def ls(
                         isinstance(with_filter, str)
                         and with_filter not in merged.columns
                     )
-                    else with_filter  # either Expr already or column name
+                    else with_filter,  # either Expr already or column name
                 )
             except Exception as e:
                 filter_fail_msg = f"Filter {with_filter!r} failed, skipped"
@@ -531,7 +542,7 @@ def ls(
                     print(f"{source}:", file=print_to)
                 print(paths, file=print_to)
     if inspect:
-        breakpoint()
+        eval("breakpoint()")
     if to_dict:
         if merge_all:
             return {"": merged}

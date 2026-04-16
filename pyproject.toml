@@ -2,19 +2,29 @@
 build-backend = "uv_build"
 requires = ["uv_build>=0.11.6,<0.12"]
 
+[dependency-groups]
+dev = [
+  "freezegun>=1.5.1",
+  "inline-snapshot[black]>=0.19.3",
+  "pytest>=8.3.4"
+]
+
 [project]
 name = "polars-ls"
 version = "0.5.4"
 description = "List directory contents as Polars DataFrames"
 readme = "README.md"
 authors = [
-    { name = "Louis Maddox", email = "louismmx@gmail.com" },
+  {name = "Louis Maddox", email = "louismmx@gmail.com"}
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "argh>=0.31.3",
-    "polars>=1.30",
+  "argh>=0.31.3",
+  "polars>=1.30"
 ]
+
+[project.optional-dependencies]
+lts-cpu = ["polars[rtcompat]>=1.30"]
 
 [project.scripts]
 pols = "pols:cli.cli"
@@ -24,15 +34,8 @@ pols = "pols:cli.cli"
 Homepage = "https://github.com/lmmx/polars-ls"
 Repository = "https://github.com/lmmx/polars-ls.git"
 
-[project.optional-dependencies]
-lts-cpu = ["polars[rtcompat]>=1.30"]
-
-[dependency-groups]
-dev = [
-    "freezegun>=1.5.1",
-    "inline-snapshot[black]>=0.19.3",
-    "pytest>=8.3.4",
-]
+[tool.ruff.lint]
+ignore = ["E741"]
 
 [tool.uv.build-backend]
 module-name = "pols"

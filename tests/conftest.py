@@ -30,7 +30,8 @@ def test_dir(tmp_path):
         subdir = tmp_path / "subdir"
         subdir.mkdir()
         os.utime(
-            subdir, (TEST_TIMESTAMP, TEST_TIMESTAMP)
+            subdir,
+            (TEST_TIMESTAMP, TEST_TIMESTAMP),
         )  # Set timestamp right after creation
 
         # Then create files in subdirectory

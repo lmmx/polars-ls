@@ -21,12 +21,12 @@ def numeric_sort(name: pl.Expr) -> pl.Expr:
                     pl.element()
                     .cast(pl.Binary)
                     .bin.encode("hex")
-                    .str.to_integer(base=16)
-                )
+                    .str.to_integer(base=16),
+                ),
             )
             .otherwise(
                 pl.element().cast(pl.Binary).bin.encode("hex").cast(pl.List(pl.Int64)),
-            )
+            ),
         )
         .list.eval(pl.element().explode())
         .alias("binhex")

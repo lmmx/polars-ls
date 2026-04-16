@@ -49,7 +49,7 @@ of course absolute paths always show as absolute so their 'root' is shown too).
 different roots whose relative names are being shown would be invalid)
 
 ```bash
-$ ls README.md src src/pols/__init__.py 
+$ ls README.md src src/pols/__init__.py
 README.md  src/pols/__init__.py
 
 src:
