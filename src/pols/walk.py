@@ -13,7 +13,10 @@ def flat_descendants(source: Path, *, hidden: bool = True, report: bool = True):
 
 
 def walk_root_rel_raw_paths(
-    source: Path, *, hidden: bool = True, report: bool = True
+    source: Path,
+    *,
+    hidden: bool = True,
+    report: bool = True,
 ) -> list[list[str]]:
     """
     Walk a path's subtree of paths (descendants), restoring the `.` prefix for all of

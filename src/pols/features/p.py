@@ -10,5 +10,5 @@ def append_slash(files: pl.LazyFrame) -> pl.LazyFrame:
         pl.when(pl.col("is_dir"))
         .then(pl.col("name") + "/")
         .otherwise(pl.col("name"))
-        .alias("name")
+        .alias("name"),
     )
