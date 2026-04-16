@@ -14,7 +14,7 @@ test = [
 
 [project]
 name = "polars-ls"
-version = "0.5.5"
+version = "0.5.6"
 description = "List directory contents as Polars DataFrames"
 readme = "README.md"
 authors = [

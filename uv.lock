@@ -3,7 +3,7 @@ revision = 3
 requires-python = ">=3.10"
 
 [options]
-exclude-newer = "2026-04-13T13:08:43.251640439Z"
+exclude-newer = "2026-04-13T13:10:51.323880066Z"
 exclude-newer-span = "P3D"
 
 [[package]]
@@ -253,7 +253,7 @@ rtcompat = [
 
 [[package]]
 name = "polars-ls"
-version = "0.5.5"
+version = "0.5.6"
 source = { editable = "." }
 dependencies = [
     { name = "argh" },
