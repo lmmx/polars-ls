@@ -8,13 +8,13 @@ from typing import Literal
 import polars as pl
 
 __all__ = (
-    "add_time_metadata",
-    "add_time_metadata_deref_symlinks",
-    "add_permissions_metadata",
-    "add_permissions_metadata_deref_symlinks",
     "add_owner_group_metadata",
     "add_owner_group_metadata_deref_symlinks",
+    "add_permissions_metadata",
+    "add_permissions_metadata_deref_symlinks",
     "add_symlink_targets",
+    "add_time_metadata",
+    "add_time_metadata_deref_symlinks",
 )
 
 
