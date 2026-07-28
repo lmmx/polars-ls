@@ -213,8 +213,8 @@ def ls(
     hidden_files_allowed = A or a
     implied_time_sort = (c or u) and ((not l) or (t and l))
     time_lookup = {
-        **{k: "atime" for k in "atime access use".split()},
-        **{k: "ctime" for k in "ctime status birth creation".split()},
+        **{k: "atime" for k in ["atime", "access", "use"]},
+        **{k: "ctime" for k in ["ctime", "status", "birth", "creation"]},
         "mtime": "mtime",
     }
     if u:
